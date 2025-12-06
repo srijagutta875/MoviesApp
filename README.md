@@ -1,8 +1,23 @@
-In this project let's build a **Movies App** by applying the concepts we have learned till now. This project allows you to practice the concepts and techniques learned till React Course and apply them in a concrete project.
+In this project, I have built a Movies App by applying all the key React concepts I’ve learned so far.
+This project helped me practice and implement real-world features using React.
 
-You will demonstrate your skills by creating an app that will fetch data from an internal server using a class component, displaying that data, using **component lifecycle** methods, **routing** concepts, **authentication**, and **authorization**, and adding responsiveness to the website.
+🚀 Project Overview
 
-This is an individual assessment. All work must be your own.
+The Movies App showcases my ability to:
+
+Fetch data from an internal server using class components
+
+Use React component lifecycle methods effectively
+
+Implement Routing using react-router-dom
+
+Add Authentication and Authorization features
+
+Build a completely responsive UI
+
+Display dynamic content based on user interaction
+
+This project acts as a hands-on demonstration of my understanding of React fundamentals and my ability to structure a real application
 
 ### Prerequisites
 
@@ -611,15 +626,3 @@ If you complete the main features of the project you can try out the below featu
       - When the **Try Again** button is clicked, then the HTTP GET request should be made to **Top Rated Movies API URL**
 - Users can browse popular movies & searched movies using pagination buttons.
 </details>
-
-### Project Submission Instructions
-
-- For Mini Projects, you can submit the test cases at your own pace. But we suggest you to submit the code to know the percentage of completion through test cases and that score will be considered for your interviews.
-
-- Also it's important to publish your code frequently using `Step - 4` in the Instructions tab.
-
-> ### _Things to Keep in Mind_
->
-> - All components you implement should go in the `src/components` directory.
-> - **Do not remove the pre-filled code**
-> - Want to quickly review some of the concepts you’ve been learning? Take a look at the Cheat Sheets.
