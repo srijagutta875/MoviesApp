@@ -1,9 +1,27 @@
+.footerContainer {
+  height: 15vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .iconsContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  color: #ffffff;
 }
-.footerContainer{
-    
+.icons {
+  width: 18px;
+  height: 21px;
+}
+.contactUs {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #ffffff;
 }

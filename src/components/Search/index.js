@@ -6,7 +6,7 @@ import Header from '../Header'
 class Search extends Component {
   render() {
     return (
-      <div>
+      <div className="searchContainer">
         <Header />
         <p>Search</p>
       </div>

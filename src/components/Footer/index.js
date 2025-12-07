@@ -9,11 +9,12 @@ class Footer extends Component {
     return (
       <div className="footerContainer">
         <div className="iconsContainer">
-          <FaGoogle />
-          <FaTwitter />
-          <FaInstagram />
-          <FaYoutube />
+          <FaGoogle className="icons" />
+          <FaTwitter className="icons" />
+          <FaInstagram className="icons" />
+          <FaYoutube className="icons" />
         </div>
+        <p className="contactUs">Contact Us</p>
       </div>
     )
   }
