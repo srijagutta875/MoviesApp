@@ -43,7 +43,7 @@
     font-size: 32px;
     align-self: center;
   }
-  label {
+  .loginlabel {
     font-family: 'HK Grotesk';
     font-weight: 700;
     font-size: 12px;
@@ -54,7 +54,7 @@
     margin-top: 20px;
   }
 
-  input {
+  .logininput {
     width: 360px;
     height: 40px;
     border-radius: 2px;
@@ -66,7 +66,7 @@
     margin-top: 8px;
     margin-bottom: 24px;
   }
-  button {
+  .loginbutton {
     width: 360px;
     height: 40px;
     border-radius: 8px;
@@ -79,7 +79,7 @@
     font-size: 14px;
     cursor: pointer;
   }
-  p {
+  .loginp {
     font-family: 'HK Grotesk';
     font-weight: 400;
     font-size: 14px;
@@ -87,6 +87,12 @@
     letter-spacing: 0;
     color: #dc2626;
   }
+  .desktopText {
+    display: inline;
+  }
+  .mobileText {
+  display: none;
+}
 }
 @media screen and (max-width: 767px) {
   .loginContainer {
@@ -113,7 +119,7 @@
     font-weight: 500;
     font-size: 32px;
   }
-  label {
+  .loginlabel {
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 12px;
@@ -123,7 +129,7 @@
     color: #ffffff;
     margin-top: 20px;
   }
-  input {
+  .logininput {
     width: 296px;
     height: 40px;
     border-radius: 2px;
@@ -135,7 +141,7 @@
     margin-top: 8px;
     margin-bottom: 24px;
   }
-  button {
+  .loginbutton {
     display: flex; /* Horizontal flow */
     align-items: center;
     justify-content: center;
@@ -155,12 +161,18 @@
     color: #ffffff;
     cursor: pointer;
   }
-  p {
+  .loginp {
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 14px;
     line-height: 100%;
     letter-spacing: 0;
     color: #dc2626;
+  }
+  .desktopText {
+    display: none;
+  }
+  .mobileText {
+    display: inline;
   }
 }

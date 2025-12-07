@@ -66,27 +66,38 @@ class Login extends Component {
             <h1 className="loginHeading">Login</h1>
             <form onSubmit={this.formSubmitting}>
               <div>
-                <label htmlFor="username">USERNAME</label> <br />
+                <label htmlFor="username" className="loginlabel">
+                  USERNAME
+                </label>{' '}
+                <br />
                 <input
                   id="username"
                   type="text"
                   placeholder="Username"
                   value={username}
                   onChange={this.usernameChange}
+                  className="logininput"
                 />
               </div>
               <div>
-                <label htmlFor="password">PASSWORD</label> <br />
+                <label htmlFor="password" className="loginlabel">
+                  PASSWORD
+                </label>{' '}
+                <br />
                 <input
                   id="password"
                   type="password"
                   placeholder="Password"
                   value={password}
                   onChange={this.passwordChange}
+                  className="logininput"
                 />
               </div>
-              {showError && <p>{errorMsg}</p>}
-              <button type="submit">Login</button>
+              {showError && <p className="loginp">{errorMsg}</p>}
+              <button type="submit" className="loginbutton">
+                <span className="desktopText">Login</span>
+                <span className="mobileText">Sign Up</span>
+              </button>
             </form>
           </div>
         </div>
