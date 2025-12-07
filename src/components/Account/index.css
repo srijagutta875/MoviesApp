@@ -84,7 +84,7 @@
   border-style: none;
   cursor: pointer;
 }
-.buttonDiv{
+.buttonDiv {
   display: flex;
   flex-direction: row;
   justify-content: center;
