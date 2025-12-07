@@ -2,4 +2,90 @@
   min-height: 100vh;
   width: 100vw;
   background-color: #131313;
+  display: flex;
+  flex-direction: column;
+}
+.accountPage {
+  height: 75vh;
+  width: 100vw;
+  background-color: #ffffff;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.accountcontone {
+  width: 80vw;
+  align-self: center;
+}
+.accountHeading {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 35px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #131313;
+}
+.h-line {
+  width: 80vw;
+  height: 2px;
+  border-radius: 10px;
+  color: #cbd5e1;
+}
+.accountcont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.accountpara {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #94a3b8;
+}
+.accpara {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #1e293b;
+}
+.accpass {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #64748b;
+}
+.ultra {
+  border-style: solid;
+  border-radius: 2px;
+  border-color: #1e293b;
+  border-width: 2px;
+  padding: 2px 4px;
+  font-size: 17px;
+}
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 89px;
+  height: 40px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  background-color: #e50914;
+  color: #ffffff;
+  border-style: none;
+  cursor: pointer;
+}
+.buttonDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
