@@ -11,7 +11,7 @@ class Account extends Component {
     Cookies.remove('username')
     Cookies.remove('password')
     const {history} = this.props
-    history.push('/login')
+    history.replace('/login')
   }
 
   render() {

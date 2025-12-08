@@ -55,8 +55,8 @@ class Home extends Component {
   state = {
     trendingMovieDetails: [],
     trendingApiStatus: apiStatusConst.initial,
-    topRatedMovies: [],
-    topRatedApiStatus: apiStatusConst.initial,
+    originalsMovies: [],
+    originalsApiStatus: apiStatusConst.initial,
   }
 
   componentDidMount() {
@@ -84,7 +84,7 @@ class Home extends Component {
         id: each.id,
         overview: each.overview,
         posterPath: each.poster_path,
-        title: each.title,
+        name: each.title,
       }))
       this.setState({
         trendingMovieDetails: updatedData,
@@ -99,9 +99,9 @@ class Home extends Component {
 
   getOriginalsVideos = async () => {
     this.setState({
-      topRatedApiStatus: apiStatusConst.inProgress,
+      originalsApiStatus: apiStatusConst.inProgress,
     })
-    const apiUrl = 'https://apis.ccbp.in/movies-app/top-rated-movies'
+    const apiUrl = 'https://apis.ccbp.in/movies-app/originals'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
@@ -117,15 +117,15 @@ class Home extends Component {
         id: each.id,
         overview: each.overview,
         posterPath: each.poster_path,
-        title: each.title,
+        name: each.title,
       }))
       this.setState({
-        topRatedMovies: updatedData,
-        topRatedApiStatus: apiStatusConst.success,
+        originalsMovies: updatedData,
+        originalsApiStatus: apiStatusConst.success,
       })
     } else {
       this.setState({
-        topRatedApiStatus: apiStatusConst.failure,
+        originalsApiStatus: apiStatusConst.failure,
       })
     }
   }
@@ -135,11 +135,11 @@ class Home extends Component {
     return (
       <Slider {...settings}>
         {trendingMovieDetails.map(eachLogo => {
-          const {id, posterPath, title} = eachLogo
+          const {id, posterPath, name} = eachLogo
           return (
             <div className="slick-item" key={id}>
               <Link to={`/movies/${id}`}>
-                <img className="logo-image" src={posterPath} alt={title} />
+                <img className="logo-image" src={posterPath} alt={name} />
               </Link>
             </div>
           )
@@ -149,15 +149,15 @@ class Home extends Component {
   }
 
   renderOriginalsSlider = () => {
-    const {topRatedMovies} = this.state
+    const {originalsMovies} = this.state
     return (
       <Slider {...settings}>
-        {topRatedMovies.map(eachLogo => {
-          const {id, posterPath, title} = eachLogo
+        {originalsMovies.map(eachLogo => {
+          const {id, posterPath, name} = eachLogo
           return (
             <div className="slick-item" key={id}>
               <Link to={`/movies/${id}`}>
-                <img className="logo-image" src={posterPath} alt={title} />
+                <img className="logo-image" src={posterPath} alt={name} />
               </Link>
             </div>
           )
@@ -233,8 +233,8 @@ class Home extends Component {
   }
 
   renderOriginals = () => {
-    const {topRatedApiStatus} = this.state
-    switch (topRatedApiStatus) {
+    const {originalsApiStatus} = this.state
+    switch (originalsApiStatus) {
       case apiStatusConst.success:
         return this.renderOriginalsSuccess()
       case apiStatusConst.failure:
@@ -246,22 +246,61 @@ class Home extends Component {
     }
   }
 
+  renderBanner = () => {
+    const {originalsApiStatus, originalsMovies} = this.state
+
+    switch (originalsApiStatus) {
+      case apiStatusConst.inProgress:
+        return (
+          <div className="homeView">
+            <div className="loader-container">
+              <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+            </div>
+          </div>
+        )
+
+      case apiStatusConst.success: {
+        const randomIndex = Math.floor(Math.random() * originalsMovies.length)
+        const randomMovie = originalsMovies[randomIndex]
+
+        return (
+          <div
+            className="bannerContainer"
+            style={{
+              backgroundImage: `
+              linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.85),
+                rgba(0, 0, 0, 0.2)
+              ),
+              url(${randomMovie.backdropPath})
+            `,
+            }}
+          >
+            <div className="bannerContent">
+              <h1 className="bannerHeading">{randomMovie.name}</h1>
+              <p className="bannerPara">{randomMovie.overview}</p>
+              <button type="button" className="bannerButton">
+                Play
+              </button>
+            </div>
+          </div>
+        )
+      }
+
+      case apiStatusConst.failure:
+        return null
+
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <div className="homeContainer">
-        <div className="bannerContainer">
-          <Header />
-          <div className="bannerContent">
-            <h1 className="bannerHeading">Super Man</h1>
-            <p className="bannerPara">
-              Superman is a fictional superhero who first appeared in American
-              comic books published by DC Comics.
-            </p>
-            <button type="button" className="bannerButton">
-              Play
-            </button>
-          </div>
-        </div>
+        <Header />
+        {this.renderBanner()}
         <div>
           <h1 className="trendHeading">Trending Now</h1>
           {this.renderTrending()}
