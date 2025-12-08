@@ -1,11 +1,12 @@
 .homeContainer {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: #131313;
+  overflow-x: hidden;
 }
 .bannerContainer {
   height: 60vh;
-  width: 100vw;
+  width: 100%;
   background-image: url('https://res.cloudinary.com/dzveiche5/image/upload/v1765077534/Image_wic0ql.png');
   background-size: cover;
 }
@@ -19,7 +20,7 @@
 }
 .bannerHeading {
   color: #ffffff;
-  font-family: 'HK Grotesk', sans-serif;
+  font-family: 'HK Grotesk';
   font-weight: 400;
   font-size: 45px;
   line-height: 62px;
@@ -27,7 +28,7 @@
   margin-bottom: 3px;
 }
 .bannerPara {
-  font-family: 'HK Grotesk', sans-serif;
+  font-family: 'HK Grotesk';
   font-size: 20px;
   font-weight: 300;
   line-height: 100%;
@@ -42,4 +43,61 @@
   background-color: #ffffff;
   color: #131313;
   border-style: none;
+}
+.trendHeading {
+  font-family: 'HK Grotesk';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-left: 10vw;
+}
+.homeView {
+  height: 30vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  border-radius: 8px;
+}
+.homeFailurePara {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+}
+.homeFailureButton {
+  display: flex; /* Flow: Vertical */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 120px;
+  height: 48px;
+
+  padding: 12px 24px;
+  border-radius: 4px;
+  border-style: none;
+}
+.slick-item {
+  padding: 10px;
+}
+
+.logo-image {
+  width: 90%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.slider-container {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
 }
