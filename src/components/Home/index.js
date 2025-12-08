@@ -4,7 +4,6 @@ import {Component} from 'react'
 import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {MdError} from 'react-icons/md'
 import {Link} from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
@@ -180,7 +179,10 @@ class Home extends Component {
 
   renderTrendFailureView = () => (
     <div className="homeView">
-      <MdError size={48} color="red" />
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+      />
       <p className="HomeFailurePara">Something went wrong. Please try again</p>
       <button
         className="HomeFailureButton"
@@ -198,7 +200,10 @@ class Home extends Component {
 
   renderOriginalFailureView = () => (
     <div className="homeView">
-      <MdError size={48} color="red" />
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+      />
       <p className="HomeFailurePara">Something went wrong. Please try again</p>
       <button
         className="HomeFailureButton"
