@@ -7,7 +7,13 @@
 .bannerContainer {
   height: 60vh;
   width: 100%;
-  background-image: url('https://res.cloudinary.com/dzveiche5/image/upload/v1765077534/Image_wic0ql.png');
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 25%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0) 100%
+    ),url('https://res.cloudinary.com/dzveiche5/image/upload/v1765077534/Image_wic0ql.png');
   background-size: cover;
 }
 .bannerContent {

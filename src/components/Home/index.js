@@ -5,10 +5,9 @@ import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {MdError} from 'react-icons/md'
+import {Link} from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
-
-// import {Link} from 'react-router-dom'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -139,7 +138,9 @@ class Home extends Component {
           const {id, posterPath, title} = eachLogo
           return (
             <div className="slick-item" key={id}>
-              <img className="logo-image" src={posterPath} alt={title} />
+              <Link to={`/movies/${id}`}>
+                <img className="logo-image" src={posterPath} alt={title} />
+              </Link>
             </div>
           )
         })}
@@ -155,7 +156,9 @@ class Home extends Component {
           const {id, posterPath, title} = eachLogo
           return (
             <div className="slick-item" key={id}>
-              <img className="logo-image" src={posterPath} alt={title} />
+              <Link to={`/movies/${id}`}>
+                <img className="logo-image" src={posterPath} alt={title} />
+              </Link>
             </div>
           )
         })}
