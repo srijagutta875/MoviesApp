@@ -612,8 +612,6 @@ Returns a response containing the list of movies and their movie names should in
 
 If you complete the main features of the project you can try out the below features as well.
 
-**Note:** Just a reminder the additional functionality is just extra practice using the tools we have learned. These are not required. If you do not reach the stretch goals, don't worry.
-
 <details>
 <summary>Additional Functionality to be added</summary>
 
