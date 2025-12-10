@@ -5,77 +5,148 @@ import {Link, withRouter} from 'react-router-dom'
 import {HiOutlineSearch} from 'react-icons/hi'
 
 class Header extends Component {
+  state = {toShow: false}
+
+  toggleButton = () => {
+    this.setState(prevState => ({
+      toShow: !prevState.toShow,
+    }))
+  }
+
   SearchButton = () => {
     const {history} = this.props
     history.push('/search')
   }
 
   render() {
+    const {toShow} = this.state
     const {location} = this.props
     const currentPath = location.pathname
     const searchPage = currentPath === '/search'
     return (
-      <div className="headerContainer">
-        <div className="container">
-          <Link to="/">
-            <img
-              src="https://res.cloudinary.com/dzveiche5/image/upload/v1764998105/Group_7399_nlvgrv.png"
-              alt="website logo"
-              className="headerlogo"
-            />
-          </Link>
-          <ul className="bannerList">
-            <li className="listItem">
-              <Link
-                to="/"
-                className={`linkItem ${currentPath === '/' ? 'active' : ''}`}
-              >
-                Home
-              </Link>
-            </li>
-            <li className="listItem">
-              <Link
-                to="/popular"
-                className={`linkItem ${
-                  currentPath === '/popular' ? 'active' : ''
-                }`}
-              >
-                Popular
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="container">
-          {searchPage ? (
-            <div className="searchWrapper">
-              <input
-                type="search"
-                placeholder="Search"
-                className="searchInput"
-              />
-              <button type="button" className="searchIconButton">
-                <HiOutlineSearch className="searchIcon" />
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="searchButton"
-              onClick={this.SearchButton}
-            >
-              <HiOutlineSearch className="searchIcon" />
-            </button>
-          )}
-          <div>
-            <Link to="/account">
+      <div>
+        <div className="headerContainer">
+          <div className="container">
+            <Link to="/">
               <img
-                src="https://res.cloudinary.com/dzveiche5/image/upload/v1765085027/Avatar_p2cne9.png"
-                alt="profile"
-                className="profileImage"
+                src="https://res.cloudinary.com/dzveiche5/image/upload/v1764998105/Group_7399_nlvgrv.png"
+                alt="website logo"
+                className="headerlogo"
               />
             </Link>
+            <ul className="bannerList">
+              <li className="listItem">
+                <Link
+                  to="/"
+                  className={`linkItem ${currentPath === '/' ? 'active' : ''}`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="listItem">
+                <Link
+                  to="/popular"
+                  className={`linkItem ${
+                    currentPath === '/popular' ? 'active' : ''
+                  }`}
+                >
+                  Popular
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="container">
+            {searchPage ? (
+              <div className="searchWrapper">
+                <input
+                  type="search"
+                  placeholder="Search"
+                  className="searchInput"
+                />
+                <button type="button" className="searchIconButton">
+                  <HiOutlineSearch className="searchIcon" />
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="searchButton"
+                onClick={this.SearchButton}
+              >
+                <HiOutlineSearch className="searchIcon" />
+              </button>
+            )}
+            <div className="headerAccountCont">
+              <Link to="/account">
+                <img
+                  src="https://res.cloudinary.com/dzveiche5/image/upload/v1765085027/Avatar_p2cne9.png"
+                  alt="profile"
+                  className="profileImage"
+                />
+              </Link>
+            </div>
+            <div className="iconContainer">
+              <button
+                type="button"
+                className="hamburgerButton"
+                onClick={this.toggleButton}
+              >
+                <img
+                  src="https://res.cloudinary.com/dzveiche5/image/upload/v1765345476/add-to-queue_1_t6tcot.png"
+                  alt="hamburger icon"
+                  className="hamburgerIcon"
+                />
+              </button>
+            </div>
           </div>
         </div>
+        {toShow && (
+          <div className="toggleContainer">
+            <ul className="toggleList">
+              <li className="listItem">
+                <Link
+                  to="/"
+                  className={`linkItem ${currentPath === '/' ? 'active' : ''}`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="listItem">
+                <Link
+                  to="/popular"
+                  className={`linkItem ${
+                    currentPath === '/popular' ? 'active' : ''
+                  }`}
+                >
+                  Popular
+                </Link>
+              </li>
+              <li className="listItem">
+                <Link
+                  to="/account"
+                  className={`linkItem ${
+                    currentPath === '/account' ? 'active' : ''
+                  }`}
+                >
+                  Account
+                </Link>
+              </li>
+              <li className="iconContainer">
+                <button
+                  type="button"
+                  className="hamburgerButton"
+                  onClick={this.toggleButton}
+                >
+                  <img
+                    src="https://res.cloudinary.com/dzveiche5/image/upload/v1765347621/Solid_xwieyf.png"
+                    alt="close icon"
+                    className="hamburgerIcon"
+                  />
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     )
   }
