@@ -11,11 +11,15 @@ class Header extends Component {
   }
 
   render() {
-    const {location, menuOpen, toggleMenu} = this.props
+    const {location, menuOpen, toggleMenu, isTransparent} = this.props
     const currentPath = location.pathname
     const searchPage = currentPath === '/search'
+
     return (
-      <div>
+      <div
+        className={`headerWrapper ${isTransparent ? 'transparent' : 'solid'}`}
+      >
+        {/* HEADER */}
         <div className="headerContainer">
           <div className="container">
             <Link to="/">
@@ -25,6 +29,7 @@ class Header extends Component {
                 className="headerlogo"
               />
             </Link>
+
             <ul className="bannerList">
               <li className="listItem">
                 <Link
@@ -46,6 +51,7 @@ class Header extends Component {
               </li>
             </ul>
           </div>
+
           <div className="container">
             {searchPage ? (
               <div className="searchWrapper">
@@ -67,6 +73,7 @@ class Header extends Component {
                 <HiOutlineSearch className="searchIcon" />
               </button>
             )}
+
             <div className="headerAccountCont">
               <Link to="/account">
                 <img
@@ -76,6 +83,7 @@ class Header extends Component {
                 />
               </Link>
             </div>
+
             <div className="iconContainer">
               <button
                 type="button"
@@ -91,6 +99,8 @@ class Header extends Component {
             </div>
           </div>
         </div>
+
+        {/* TOGGLE MENU */}
         {menuOpen && (
           <div className="toggleContainer">
             <ul className="toggleList">
@@ -142,4 +152,5 @@ class Header extends Component {
     )
   }
 }
+
 export default withRouter(Header)

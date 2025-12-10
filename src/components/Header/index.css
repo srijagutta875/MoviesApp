@@ -1,24 +1,27 @@
-.headerContainer {
-  /*height: 10vh;
-  width: 100vw;
-  background-color: rgba(12, 11, 16, 0.2);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;*/
-  height: 10vh;
-  width: 100%;
+.headerWrapper {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 10;
+}
 
+.headerWrapper.solid {
+  background-color: #131313;
+}
+
+.headerWrapper.transparent {
   background-color: rgba(12, 11, 16, 0.2);
+}
+
+.headerContainer {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
 }
+
 .container {
   display: flex;
   flex-direction: row;
@@ -123,25 +126,17 @@
   }
 }
 .toggleContainer {
-  padding-top: 10vh;
-  width: 100%;
   height: 10vh;
-  position: absolute;
-  top: 10vh;
-  left: 0;
-  z-index: 10;
-
-  background-color: rgba(12, 11, 16, 0.2);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 40px;
 }
+
 .toggleList {
-  list-style-type: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   gap: 10px;
 }

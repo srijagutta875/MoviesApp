@@ -13,14 +13,25 @@ class Layout extends Component {
 
   render() {
     const {menuOpen} = this.state
-    const {children} = this.props
+    const {children, location} = this.props
+    const {pathname} = location
+    const isTransparentHeader =
+      pathname === '/' || pathname.startsWith('/movies/')
+    let mainClass = 'pageLayout'
 
+    if (menuOpen && !isTransparentHeader) {
+      mainClass = 'accountDropdown'
+    } else if (isTransparentHeader) {
+      mainClass = '' // overlay / banner pages
+    }
     return (
       <>
-        <Header menuOpen={menuOpen} toggleMenu={this.toggleMenu} />
-        <main className={menuOpen ? 'accountDropdown' : 'pageLayout'}>
-          {children}
-        </main>
+        <Header
+          menuOpen={menuOpen}
+          toggleMenu={this.toggleMenu}
+          isTransparent={isTransparentHeader}
+        />
+        <main className={mainClass}>{children}</main>
       </>
     )
   }

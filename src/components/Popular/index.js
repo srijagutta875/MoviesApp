@@ -8,7 +8,7 @@ class Popular extends Component {
   render() {
     return (
       <div className="popularContainer">
-        <h1>Popular</h1>
+        <p>Popular</p>
         <Footer />
       </div>
     )

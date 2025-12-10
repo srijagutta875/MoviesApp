@@ -1,11 +1,9 @@
 /* ONLY Account + Menu Open */
 .accountDropdown {
-  padding-top: calc(10vh + 10vh);
-  background-color: #131313; /* header + dropdown */
+  padding-top: 20vh;
 }
-@media screen and (max-width:767px){
-  .pageLayout{
+@media screen and (max-width: 767px) {
+  .pageLayout {
     padding-top: 10vh;
-    background-color: #131313;
   }
 }
