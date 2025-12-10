@@ -2,7 +2,7 @@ import './index.css'
 
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import Header from '../Header'
+// import Header from '../Header'
 import Footer from '../Footer'
 
 class Account extends Component {
@@ -21,7 +21,6 @@ class Account extends Component {
     const pass = '*'.repeat(password.length)
     return (
       <div className="accountContainer">
-        <Header />
         <div className="accountPage">
           <div className="accountcontone">
             <h1 className="accountHeading">Account</h1>

@@ -5,7 +5,7 @@ import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
-import Header from '../Header'
+// import Header from '../Header'
 import Footer from '../Footer'
 
 import 'slick-carousel/slick/slick.css'
@@ -304,7 +304,6 @@ class Home extends Component {
   render() {
     return (
       <div className="homeContainer">
-        <Header />
         {this.renderBanner()}
         <div>
           <h1 className="trendHeading">Trending Now</h1>

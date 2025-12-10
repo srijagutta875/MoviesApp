@@ -5,22 +5,13 @@ import {Link, withRouter} from 'react-router-dom'
 import {HiOutlineSearch} from 'react-icons/hi'
 
 class Header extends Component {
-  state = {toShow: false}
-
-  toggleButton = () => {
-    this.setState(prevState => ({
-      toShow: !prevState.toShow,
-    }))
-  }
-
   SearchButton = () => {
     const {history} = this.props
     history.push('/search')
   }
 
   render() {
-    const {toShow} = this.state
-    const {location} = this.props
+    const {location, menuOpen, toggleMenu} = this.props
     const currentPath = location.pathname
     const searchPage = currentPath === '/search'
     return (
@@ -89,7 +80,7 @@ class Header extends Component {
               <button
                 type="button"
                 className="hamburgerButton"
-                onClick={this.toggleButton}
+                onClick={toggleMenu}
               >
                 <img
                   src="https://res.cloudinary.com/dzveiche5/image/upload/v1765345476/add-to-queue_1_t6tcot.png"
@@ -100,7 +91,7 @@ class Header extends Component {
             </div>
           </div>
         </div>
-        {toShow && (
+        {menuOpen && (
           <div className="toggleContainer">
             <ul className="toggleList">
               <li className="listItem">
@@ -135,7 +126,7 @@ class Header extends Component {
                 <button
                   type="button"
                   className="hamburgerButton"
-                  onClick={this.toggleButton}
+                  onClick={toggleMenu}
                 >
                   <img
                     src="https://res.cloudinary.com/dzveiche5/image/upload/v1765347621/Solid_xwieyf.png"
