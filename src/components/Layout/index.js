@@ -16,7 +16,7 @@ class Layout extends Component {
     const {children, location} = this.props
     const {pathname} = location
     const isTransparentHeader =
-      pathname === '/' || pathname.startsWith('/movies/')
+      pathname === '/' || pathname.startsWith('/movies')
     let mainClass = 'pageLayout'
 
     if (menuOpen && !isTransparentHeader) {
