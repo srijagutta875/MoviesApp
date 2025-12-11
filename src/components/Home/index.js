@@ -201,12 +201,13 @@ class Home extends Component {
   renderOriginalFailureView = () => (
     <div className="homeView">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        src="https://res.cloudinary.com/dzveiche5/image/upload/v1765428314/Icon_tv0y7l.png"
         alt="failure view"
+        className="homeFailureImg"
       />
-      <p className="HomeFailurePara">Something went wrong. Please try again</p>
+      <p className="homeFailurePara">Something went wrong. Please try again</p>
       <button
-        className="HomeFailureButton"
+        className="homeFailureButton"
         type="button"
         onClick={this.OriginalsRetryButton}
       >

@@ -79,6 +79,10 @@
   background-color: #0d0d0d;
   border-radius: 8px;
 }
+.homeFailureImg {
+  width: 48px;
+  height: 48px;
+}
 .homeFailurePara {
   font-family: 'HK Grotesk', sans-serif;
   font-weight: 500;
@@ -89,7 +93,7 @@
   color: #ffffff;
 }
 .homeFailureButton {
-  display: flex; /* Flow: Vertical */
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;

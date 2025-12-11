@@ -9,3 +9,55 @@
     padding-top: 0vh;
   }
 }
+.popularView {
+  min-height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popularFailureImg {
+  height: 40vh;
+  width: 40vw;
+}
+.popularFailurePara {
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+}
+.popularFailureButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 120px;
+  height: 48px;
+
+  padding: 12px 24px;
+  border-radius: 4px;
+  border-style: none;
+}
+.popularListImage {
+  height: 20vh;
+  width: 20vw;
+  margin: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.popularList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
+
+.popularList li {
+  list-style: none;
+}
