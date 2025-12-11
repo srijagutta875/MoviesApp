@@ -284,7 +284,13 @@ class Home extends Component {
           >
             <div className="bannerContent">
               <h1 className="bannerHeading">{randomMovie.name}</h1>
-              <p className="bannerPara">{randomMovie.overview}</p>
+              <p
+                className={`bannerPara ${
+                  randomMovie.name === 'Clifford' ? 'bannerCliff' : ''
+                }`}
+              >
+                {randomMovie.overview}
+              </p>
               <button type="button" className="bannerButton">
                 Play
               </button>
