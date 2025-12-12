@@ -4,6 +4,8 @@ import {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {HiOutlineSearch} from 'react-icons/hi'
 
+import SearchContext from '../../context/SearchContext'
+
 class Header extends Component {
   SearchButton = () => {
     const {history} = this.props
@@ -53,27 +55,49 @@ class Header extends Component {
           </div>
 
           <div className="container">
-            {searchPage ? (
-              <div className="searchWrapper">
-                <input
-                  type="search"
-                  placeholder="Search"
-                  className="searchInput"
-                />
-                <button type="button" className="searchIconButton">
-                  <HiOutlineSearch className="searchIcon" />
-                </button>
-              </div>
-            ) : (
-              <button
-                type="button"
-                className="searchButton"
-                onClick={this.SearchButton}
-              >
-                <HiOutlineSearch className="searchIcon" />
-              </button>
-            )}
+            <SearchContext.Consumer>
+              {value => {
+                const {searchText, setSearchText} = value
+                const onChangeSearch = event => {
+                  setSearchText(event.target.value)
+                }
+                const {history} = this.props
+                const onSearchClick = () => {
+                  history.push(`/search?query=${searchText}`)
+                }
 
+                return (
+                  <>
+                    {searchPage ? (
+                      <div className="searchWrapper">
+                        <input
+                          type="search"
+                          placeholder="Search"
+                          className="searchInput"
+                          value={searchText}
+                          onChange={onChangeSearch}
+                        />
+                        <button
+                          type="button"
+                          className="searchIconButton"
+                          onClick={onSearchClick}
+                        >
+                          <HiOutlineSearch className="searchIcon" />
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        className="searchButton"
+                        onClick={this.SearchButton}
+                      >
+                        <HiOutlineSearch className="searchIcon" />
+                      </button>
+                    )}
+                  </>
+                )
+              }}
+            </SearchContext.Consumer>
             <div className="headerAccountCont">
               <Link to="/account">
                 <img

@@ -75,6 +75,37 @@
   border-radius: 4px;
   border: 1px solid #ffffff;
 }
+@media screen and (max-width: 767px) {
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 140px; 
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+  }
+
+  .searchInput {
+    flex-grow: 1;
+    min-width: 0; 
+    font-size: 12px;
+  }
+
+  .searchIconButton {
+    min-width: 24px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchIcon {
+    font-size: 18px; 
+    color: #ffffff;
+    pointer-events: none;
+  }
+}
 .searchInput {
   flex: 1;
   height: 100%;
