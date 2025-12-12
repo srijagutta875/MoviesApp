@@ -3,6 +3,7 @@ import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+
 // import Header from '../Header'
 import Footer from '../Footer'
 
@@ -71,7 +72,7 @@ class MovieItemDetails extends Component {
 
         similarMovies: movieData.movie_details.similar_movies.map(each => ({
           id: each.id,
-          title: each.title,
+          name: each.title,
           posterPath: each.poster_path,
           backdropPath: each.backdrop_path,
           overview: each.overview,
@@ -121,10 +122,11 @@ class MovieItemDetails extends Component {
   renderMovieSuccess = () => {
     const {movieItemDetails} = this.state
     return (
-      <div
-        className="moviebannerContainer"
-        style={{
-          backgroundImage: `
+      <div className="movieSuccess">
+        <div
+          className="moviebannerContainer"
+          style={{
+            backgroundImage: `
               linear-gradient(
                 to top,
                 rgba(0, 0, 0, 0.85),
@@ -132,19 +134,63 @@ class MovieItemDetails extends Component {
               ),
               url(${movieItemDetails.backdropPath})
             `,
-        }}
-      >
-        <div className="moviebannerContent">
-          <h1 className="moviebannerHeading">{movieItemDetails.name}</h1>
-          <ul className="moviesmallList">
-            <li>{movieItemDetails.runtime}</li>
-            <li className="specialList">{movieItemDetails.adult}</li>
-            <li>{movieItemDetails.releaseDate}</li>
+          }}
+        >
+          <div className="moviebannerContent">
+            <h1 className="moviebannerHeading">{movieItemDetails.name}</h1>
+            <ul className="moviesmallList">
+              <li>{movieItemDetails.runtime}</li>
+              <li className="specialList">{movieItemDetails.adult}</li>
+              <li>{movieItemDetails.releaseDate}</li>
+            </ul>
+            <p className="moviebannerPara">{movieItemDetails.overview}</p>
+            <button type="button" className="moviebannerButton">
+              Play
+            </button>
+          </div>
+        </div>
+        <div className="movieSecondPart">
+          <div className="movieSecondCont">
+            <h1 className="movieSecondHead">Genres</h1>
+            <ul className="movieSecondList">
+              {movieItemDetails.genres.map(each => (
+                <li key={each.id}>{each.name}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="movieSecondCont">
+            <h1 className="movieSecondHead">Audio Available</h1>
+            <ul className="movieSecondList">
+              {movieItemDetails.spokenLanguages.map(each => (
+                <li key={each.id}>{each.englishName}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="movieSecondCont">
+            <h1 className="movieSecondHead">Rating Count</h1>
+            <p className="movieSecondList">{movieItemDetails.voteCount}</p>
+            <h1 className="movieSecondHead">Rating Average</h1>
+            <p className="movieSecondList">{movieItemDetails.voteAverage}</p>
+          </div>
+          <div className="movieSecondCont">
+            <h1 className="movieSecondHead">Budget</h1>
+            <p className="movieSecondList">{movieItemDetails.budget}</p>
+            <h1 className="movieSecondHead">Release Date</h1>
+            <p className="movieSecondList">{movieItemDetails.releaseDate}</p>
+          </div>
+        </div>
+        <div>
+          <h1 className="movieHeading">More like this</h1>
+          <ul className="movieList">
+            {movieItemDetails.similarMovies.map(eachLogo => {
+              const {id, posterPath, name} = eachLogo
+              return (
+                <li key={id} className="movie-item">
+                  <img className="movieListImage" src={posterPath} alt={name} />
+                </li>
+              )
+            })}
           </ul>
-          <p className="moviebannerPara">{movieItemDetails.overview}</p>
-          <button type="button" className="moviebannerButton">
-            Play
-          </button>
         </div>
       </div>
     )
