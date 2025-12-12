@@ -15,7 +15,10 @@ const apiStatusConst = {
 }
 
 class Popular extends Component {
-  state = {popularApiStatus: apiStatusConst.initial, popularDetails: []}
+  state = {
+    popularApiStatus: apiStatusConst.initial,
+    popularDetails: [],
+  }
 
   componentDidMount() {
     this.getPopularDetails()

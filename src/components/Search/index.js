@@ -17,9 +17,7 @@ const apiStatusConst = {
 class SearchRoute extends Component {
   state = {searchMovies: [], searchMovieApi: apiStatusConst.initial}
 
-  componentDidMount() {
-    this.getSearchDetails()
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProps) {
     const {location: prevLocation} = prevProps
@@ -43,6 +41,7 @@ class SearchRoute extends Component {
     }
     this.setState({
       searchMovieApi: apiStatusConst.inProgress,
+      searchMovies: [],
     })
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/movies-app/movies-search?search=${searchText}`
@@ -114,7 +113,7 @@ class SearchRoute extends Component {
   renderSearchEmpty = () => {
     const {location} = this.props
     const params = new URLSearchParams(location.search)
-    const searchInput = params.get('query') || ''
+    const searchInput = params.get('query') || ' '
 
     return (
       <div className="searchView">
@@ -124,8 +123,7 @@ class SearchRoute extends Component {
           className="searchFailureImg"
         />
         <p className="searchFailurePara">
-          Your search for <strong>{searchInput}</strong> did not find any
-          matches.
+          Your search for {searchInput} did not find any matches.
         </p>
       </div>
     )
@@ -150,8 +148,17 @@ class SearchRoute extends Component {
     )
   }
 
+  renderInitialView = () => (
+    <div className="searchView">
+      <p className="searchPrompt">Search for movies above!</p>
+    </div>
+  )
+
   renderDetails = () => {
     const {searchMovieApi} = this.state
+    if (searchMovieApi === apiStatusConst.initial) {
+      return this.renderInitialView()
+    }
     switch (searchMovieApi) {
       case apiStatusConst.inProgress:
         return this.renderSearchLoader()
