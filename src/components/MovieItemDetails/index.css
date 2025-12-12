@@ -1,3 +1,5 @@
+/* ===== MOVIE ITEM DETAILS STYLES (MERGED) ===== */
+
 .movieItemDetailsContainer {
   min-height: 100vh;
   width: 100vw;
@@ -6,6 +8,7 @@
   flex-direction: column;
   padding-top: 10vh;
 }
+
 .movieView {
   min-height: 90vh;
   width: 100vw;
@@ -34,13 +37,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   width: 120px;
   height: 48px;
-
   padding: 12px 24px;
   border-radius: 4px;
   border-style: none;
+  cursor: pointer;
 }
 
 .movieSuccess {
@@ -48,75 +50,99 @@
   width: 100vw;
 }
 
+/* ===== UPDATED BANNER STYLING ===== */
+
 .moviebannerContainer {
   height: 60vh;
   width: 100%;
   background-size: cover;
-  object-fit: cover;
-  padding-top: 90px;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
 }
+
 .moviebannerContent {
   margin-left: 10vw;
-  width: 50vw;
+  max-width: 45vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
 }
+
 .moviebannerHeading {
   color: #ffffff;
-  font-family: 'HK Grotesk';
-  font-weight: 400;
-  font-size: 45px;
-  line-height: 62px;
+  font-family: 'HK Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
   letter-spacing: 0px;
-  margin-bottom: 3px;
+  margin: 0;
 }
+
 .moviebannerPara {
-  font-family: 'HK Grotesk';
-  font-size: 20px;
+  font-family: 'HK Grotesk', sans-serif;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #ffffff;
+  line-height: 1.4;
+  color: #f1f1f1;
   margin-top: 3px;
 }
-.moviebannerButton {
-  width: 74px;
-  height: 40px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  color: #131313;
-  border-style: none;
-}
-@media screen and (max-width: 767px) {
-  .moviebannerHeading {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 38px;
-  }
-  .moviebannerPara {
-    font-weight: 400;
-    font-size: 13px;
-  }
-}
+
+/* Small list (runtime/adult/release date) */
 .moviesmallList {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: #ffffff;
-  padding-left: 0px;
-  margin-top: 0px;
-  font-family: 'HK Grotesk';
+  padding-left: 0;
+  margin: 8px 0;
+  font-family: 'HK Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
+
+.moviesmallList li {
+  list-style: none;
+}
+
 .specialList {
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 1px;
+  border: 1px solid #ffffff;
   border-radius: 2px;
   padding: 0 10px;
+  font-family: 'HK Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
 }
+
+/* Play button */
+.moviebannerButton {
+  width: auto;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #131313;
+  border: none;
+  font-family: 'HK Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.moviebannerButton:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ===== SECONDARY SECTION ===== */
+
 .movieSecondPart {
   display: flex;
   flex-direction: row;
@@ -124,10 +150,12 @@
   gap: 15vw;
   padding: 20px 0;
 }
+
 .movieSecondCont {
   display: flex;
   flex-direction: column;
 }
+
 .movieSecondHead {
   font-family: 'HK Grotesk';
   font-weight: 600;
@@ -138,49 +166,17 @@
   margin: 1px;
   padding: 0;
 }
-.movieSecondList {
-  list-style-type: none;
+
+.movieSecondPara {
   font-family: 'HK Grotesk', sans-serif;
-  font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0px;
+  font-weight: 400;
   color: #ffffff;
-  padding-left: 0px;
-  margin: 1px;
-  padding: 0;
+  margin: 4px 0;
 }
 
-@media screen and (max-width: 767px) {
-  .movieSecondCont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80vw;
-  }
-  .movieSecondPart {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .movieSecondHead {
-    font-family: 'HK Grotesk';
-    font-size: 8px;
-    color: #94a3b8;
-    margin: 1px;
-    padding: 0;
-    line-height: 10px;
-  }
-  .movieSecondList {
-    list-style-type: none;
-    font-family: 'HK Grotesk', sans-serif;
-    font-size: 8px;
-    color: #ffffff;
-    margin: 1px;
-    padding: 0;
-    line-height: 10px;
-  }
-}
+/* ===== SIMILAR MOVIES LIST ===== */
+
 .movieHeading {
   font-family: 'HK Grotesk';
   font-weight: 500;
@@ -189,17 +185,9 @@
   letter-spacing: 0px;
   color: #ffffff;
   margin-left: 10vw;
+  margin-top: 20px;
 }
-movie-item {
-  padding: 10px;
-}
-.movieListImage {
-  height: 20vh;
-  width: 20vw;
-  margin: 10px;
-  border-radius: 8px;
-  object-fit: cover;
-}
+
 .movieList {
   display: flex;
   flex-wrap: wrap;
@@ -209,4 +197,77 @@ movie-item {
 
 .movieList li {
   list-style: none;
+}
+
+.movieListImage {
+  height: 20vh;
+  width: 20vw;
+  margin: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+@media screen and (max-width: 1024px) {
+  .moviebannerHeading {
+    font-size: 40px;
+  }
+  .moviebannerPara {
+    font-size: 16px;
+  }
+  .moviesmallList {
+    font-size: 15px;
+    gap: 10px;
+  }
+  .moviebannerButton {
+    font-size: 15px;
+    height: 40px;
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .moviebannerContent {
+    margin-left: 6vw;
+    width: 90vw;
+  }
+  .moviebannerHeading {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .moviebannerPara {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .moviesmallList {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .specialList {
+    padding: 0 6px;
+  }
+  .moviebannerButton {
+    font-size: 14px;
+    height: 36px;
+    padding: 0 14px;
+  }
+
+  .movieSecondCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80vw;
+  }
+  .movieSecondHead {
+    font-size: 8px;
+    color: #94a3b8;
+    margin: 1px;
+    padding: 0;
+    line-height: 10px;
+  }
+  .movieSecondPara {
+    font-size: 10px;
+    line-height: 1.3;
+  }
 }

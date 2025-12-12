@@ -15,13 +15,13 @@ class Layout extends Component {
     const {menuOpen} = this.state
     const {children, location} = this.props
     const {pathname} = location
-    const isTransparentHeader = pathname === '/' || pathname.includes('/movies')
+    const isTransparentHeader = pathname === '/'
     let mainClass = 'pageLayout'
 
     if (menuOpen && !isTransparentHeader) {
       mainClass = 'accountDropdown'
     } else if (isTransparentHeader) {
-      mainClass = '' // overlay / banner pages
+      mainClass = ''
     }
     return (
       <>

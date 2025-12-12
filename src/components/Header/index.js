@@ -81,6 +81,7 @@ class Header extends Component {
                           type="button"
                           className="searchIconButton"
                           onClick={onSearchClick}
+                          data-testid="searchButton"
                         >
                           <HiOutlineSearch className="searchIcon" />
                         </button>
@@ -90,6 +91,7 @@ class Header extends Component {
                         type="button"
                         className="searchButton"
                         onClick={this.SearchButton}
+                        data-testid="searchButton"
                       >
                         <HiOutlineSearch className="searchIcon" />
                       </button>

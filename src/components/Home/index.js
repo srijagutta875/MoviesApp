@@ -216,9 +216,17 @@ class Home extends Component {
     </div>
   )
 
-  renderLoader = () => (
+  renderTrendingLoader = () => (
     <div className="homeView">
-      <div className="loader-container">
+      <div className="loader-container" data-testid="loader">
+        <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+      </div>
+    </div>
+  )
+
+  renderOriginalsLoader = () => (
+    <div className="homeView">
+      <div className="loader-container" data-testid="loader">
         <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
       </div>
     </div>
@@ -232,7 +240,7 @@ class Home extends Component {
       case apiStatusConst.failure:
         return this.renderTrendFailureView()
       case apiStatusConst.inProgress:
-        return this.renderLoader()
+        return this.renderTrendingLoader()
       default:
         return null
     }
@@ -246,7 +254,7 @@ class Home extends Component {
       case apiStatusConst.failure:
         return this.renderOriginalFailureView()
       case apiStatusConst.inProgress:
-        return this.renderLoader()
+        return this.renderOriginalsLoader()
       default:
         return null
     }
@@ -259,7 +267,7 @@ class Home extends Component {
       case apiStatusConst.inProgress:
         return (
           <div className="homeView">
-            <div className="loader-container">
+            <div className="loader-container" data-testid="loader">
               <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
             </div>
           </div>

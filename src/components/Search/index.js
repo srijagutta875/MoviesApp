@@ -80,7 +80,7 @@ class SearchRoute extends Component {
 
   renderSearchLoader = () => (
     <div className="searchView">
-      <div className="loader-container">
+      <div className="loader-container" data-testid="loader">
         <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
       </div>
     </div>

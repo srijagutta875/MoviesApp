@@ -3,7 +3,7 @@ import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-
+import {Link} from 'react-router-dom'
 // import Header from '../Header'
 import Footer from '../Footer'
 
@@ -19,6 +19,25 @@ class MovieItemDetails extends Component {
 
   componentDidMount() {
     this.getMovieDetails()
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      match: {
+        params: {id: prevId},
+      },
+    } = prevProps
+
+    const {
+      match: {
+        params: {id: currentId},
+      },
+    } = this.props
+
+    if (prevId !== currentId) {
+      this.getMovieDetails()
+      window.scrollTo(0, 0)
+    }
   }
 
   convertRuntime = minutes => {
@@ -91,7 +110,7 @@ class MovieItemDetails extends Component {
 
   renderMovieLoader = () => (
     <div className="movieView">
-      <div className="loader-container">
+      <div className="loader-container" data-testid="loader">
         <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
       </div>
     </div>
@@ -127,13 +146,13 @@ class MovieItemDetails extends Component {
           className="moviebannerContainer"
           style={{
             backgroundImage: `
-              linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.85),
-                rgba(0, 0, 0, 0.2)
-              ),
-              url(${movieItemDetails.backdropPath})
-            `,
+                linear-gradient(
+                  to top,
+                  rgba(0, 0, 0, 0.85),
+                  rgba(0, 0, 0, 0.2)
+                ),
+                url(${movieItemDetails.backdropPath})
+              `,
           }}
         >
           <div className="moviebannerContent">
@@ -149,36 +168,41 @@ class MovieItemDetails extends Component {
             </button>
           </div>
         </div>
+
         <div className="movieSecondPart">
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Genres</h1>
-            <ul className="movieSecondList">
-              {movieItemDetails.genres.map(each => (
-                <li key={each.id}>{each.name}</li>
-              ))}
-            </ul>
+            {movieItemDetails.genres.map(each => (
+              <p key={each.id} className="movieSecondPara">
+                {each.name}
+              </p>
+            ))}
           </div>
+
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Audio Available</h1>
-            <ul className="movieSecondList">
-              {movieItemDetails.spokenLanguages.map(each => (
-                <li key={each.id}>{each.englishName}</li>
-              ))}
-            </ul>
+            {movieItemDetails.spokenLanguages.map(each => (
+              <p key={each.id} className="movieSecondPara">
+                {each.englishName}
+              </p>
+            ))}
           </div>
+
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Rating Count</h1>
-            <p className="movieSecondList">{movieItemDetails.voteCount}</p>
+            <p className="movieSecondPara">{movieItemDetails.voteCount}</p>
             <h1 className="movieSecondHead">Rating Average</h1>
-            <p className="movieSecondList">{movieItemDetails.voteAverage}</p>
+            <p className="movieSecondPara">{movieItemDetails.voteAverage}</p>
           </div>
+
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Budget</h1>
-            <p className="movieSecondList">{movieItemDetails.budget}</p>
+            <p className="movieSecondPara">{movieItemDetails.budget}</p>
             <h1 className="movieSecondHead">Release Date</h1>
-            <p className="movieSecondList">{movieItemDetails.releaseDate}</p>
+            <p className="movieSecondPara">{movieItemDetails.releaseDate}</p>
           </div>
         </div>
+
         <div>
           <h1 className="movieHeading">More like this</h1>
           <ul className="movieList">
@@ -186,7 +210,13 @@ class MovieItemDetails extends Component {
               const {id, posterPath, name} = eachLogo
               return (
                 <li key={id} className="movie-item">
-                  <img className="movieListImage" src={posterPath} alt={name} />
+                  <Link to={`/movies/${id}`}>
+                    <img
+                      className="movieListImage"
+                      src={posterPath}
+                      alt={name}
+                    />
+                  </Link>
                 </li>
               )
             })}
