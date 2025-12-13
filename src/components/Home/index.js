@@ -56,11 +56,14 @@ class Home extends Component {
     trendingApiStatus: apiStatusConst.initial,
     originalsMovies: [],
     originalsApiStatus: apiStatusConst.initial,
+    topRatedMovies: [],
+    topRatedApiStatus: apiStatusConst.initial,
   }
 
   componentDidMount() {
     this.getTrendingVideos()
     this.getOriginalsVideos()
+    this.getTopRatedVideos()
   }
 
   getTrendingVideos = async () => {
@@ -129,6 +132,39 @@ class Home extends Component {
     }
   }
 
+  getTopRatedVideos = async () => {
+    this.setState({
+      topRatedApiStatus: apiStatusConst.inProgress,
+    })
+    const apiUrl = 'https://apis.ccbp.in/movies-app/top-rated-movies'
+    const jwtToken = Cookies.get('jwt_token')
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+    const data = await response.json()
+    if (response.ok) {
+      const updatedData = data.results.map(each => ({
+        backdropPath: each.backdrop_path,
+        id: each.id,
+        overview: each.overview,
+        posterPath: each.poster_path,
+        name: each.title,
+      }))
+      this.setState({
+        topRatedMovies: updatedData,
+        topRatedApiStatus: apiStatusConst.success,
+      })
+    } else {
+      this.setState({
+        topRatedApiStatus: apiStatusConst.failure,
+      })
+    }
+  }
+
   renderTrendingSlider = () => {
     const {trendingMovieDetails} = this.state
     return (
@@ -165,12 +201,34 @@ class Home extends Component {
     )
   }
 
+  renderTopRatedSlider = () => {
+    const {topRatedMovies} = this.state
+    return (
+      <Slider {...settings}>
+        {topRatedMovies.map(eachLogo => {
+          const {id, posterPath, name} = eachLogo
+          return (
+            <div className="slick-item" key={id}>
+              <Link to={`/movies/${id}`}>
+                <img className="logo-image" src={posterPath} alt={name} />
+              </Link>
+            </div>
+          )
+        })}
+      </Slider>
+    )
+  }
+
   renderTrendSuccess = () => (
     <div className="slider-container">{this.renderTrendingSlider()}</div>
   )
 
   renderOriginalsSuccess = () => (
     <div className="slider-container">{this.renderOriginalsSlider()}</div>
+  )
+
+  renderTopRatedSuccess = () => (
+    <div className="slider-container">{this.renderTopRatedSlider()}</div>
   )
 
   OriginalsRetryButton = () => {
@@ -216,6 +274,28 @@ class Home extends Component {
     </div>
   )
 
+  topRatedRetryButton = () => {
+    this.getTopRatedVideos()
+  }
+
+  renderTopRatedFailureView = () => (
+    <div className="homeView">
+      <img
+        src="https://res.cloudinary.com/dzveiche5/image/upload/v1765428314/Icon_tv0y7l.png"
+        alt="failure view"
+        className="homeFailureImg"
+      />
+      <p className="homeFailurePara">Something went wrong. Please try again</p>
+      <button
+        className="homeFailureButton"
+        type="button"
+        onClick={this.topRatedRetryButton}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
   renderTrendingLoader = () => (
     <div className="homeView">
       <div className="loader-container" data-testid="loader">
@@ -225,6 +305,14 @@ class Home extends Component {
   )
 
   renderOriginalsLoader = () => (
+    <div className="homeView">
+      <div className="loader-container" data-testid="loader">
+        <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+      </div>
+    </div>
+  )
+
+  renderTopRatedLoader = () => (
     <div className="homeView">
       <div className="loader-container" data-testid="loader">
         <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
@@ -255,6 +343,20 @@ class Home extends Component {
         return this.renderOriginalFailureView()
       case apiStatusConst.inProgress:
         return this.renderOriginalsLoader()
+      default:
+        return null
+    }
+  }
+
+  renderTopRated = () => {
+    const {topRatedApiStatus} = this.state
+    switch (topRatedApiStatus) {
+      case apiStatusConst.success:
+        return this.renderTopRatedSuccess()
+      case apiStatusConst.failure:
+        return this.renderTopRatedFailureView()
+      case apiStatusConst.inProgress:
+        return this.renderTopRatedLoader()
       default:
         return null
     }
@@ -323,6 +425,9 @@ class Home extends Component {
         <div>
           <h1 className="trendHeading">Trending Now</h1>
           {this.renderTrending()}
+          <h1 className="trendHeading headdesktopView">Top Rated</h1>
+          <h1 className="trendHeading headmobileView">Popular</h1>
+          {this.renderTopRated()}
           <h1 className="trendHeading">Originals</h1>
           {this.renderOriginals()}
         </div>

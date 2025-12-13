@@ -121,3 +121,17 @@
   margin: 0 auto;
   width: 80%;
 }
+.headDesktopView {
+  display: inline;
+}
+.headmobileView {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .headDesktopView {
+    display: none;
+  }
+  .headmobileView {
+    display: inline;
+  }
+}
