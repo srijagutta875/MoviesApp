@@ -122,7 +122,7 @@
   width: 80%;
 }
 .headDesktopView {
-  display: inline;
+  display: block;
 }
 .headmobileView {
   display: none;

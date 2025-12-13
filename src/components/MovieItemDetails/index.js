@@ -145,14 +145,12 @@ class MovieItemDetails extends Component {
         <div
           className="moviebannerContainer"
           style={{
-            backgroundImage: `
-                linear-gradient(
-                  to top,
-                  rgba(0, 0, 0, 0.85),
-                  rgba(0, 0, 0, 0.2)
-                ),
-                url(${movieItemDetails.backdropPath})
-              `,
+            backgroundImage: `linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.85),
+              rgba(0, 0, 0, 0.2)
+            ),
+            url(${movieItemDetails.backdropPath})`,
           }}
         >
           <div className="moviebannerContent">
@@ -172,34 +170,34 @@ class MovieItemDetails extends Component {
         <div className="movieSecondPart">
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Genres</h1>
-            {movieItemDetails.genres.map(each => (
-              <p key={each.id} className="movieSecondPara">
-                {each.name}
-              </p>
-            ))}
+            <ul className="movieSecondList">
+              {movieItemDetails.genres.map(each => (
+                <li key={each.id}>{each.name}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Audio Available</h1>
-            {movieItemDetails.spokenLanguages.map(each => (
-              <p key={each.id} className="movieSecondPara">
-                {each.englishName}
-              </p>
-            ))}
+            <ul className="movieSecondList">
+              {movieItemDetails.spokenLanguages.map(each => (
+                <li key={each.id}>{each.englishName}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Rating Count</h1>
-            <p className="movieSecondPara">{movieItemDetails.voteCount}</p>
+            <p className="movieSecondList">{movieItemDetails.voteCount}</p>
             <h1 className="movieSecondHead">Rating Average</h1>
-            <p className="movieSecondPara">{movieItemDetails.voteAverage}</p>
+            <p className="movieSecondList">{movieItemDetails.voteAverage}</p>
           </div>
 
           <div className="movieSecondCont">
             <h1 className="movieSecondHead">Budget</h1>
-            <p className="movieSecondPara">{movieItemDetails.budget}</p>
+            <p className="movieSecondList">{movieItemDetails.budget}</p>
             <h1 className="movieSecondHead">Release Date</h1>
-            <p className="movieSecondPara">{movieItemDetails.releaseDate}</p>
+            <p className="movieSecondList">{movieItemDetails.releaseDate}</p>
           </div>
         </div>
 

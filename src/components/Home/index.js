@@ -425,7 +425,7 @@ class Home extends Component {
         <div>
           <h1 className="trendHeading">Trending Now</h1>
           {this.renderTrending()}
-          <h1 className="trendHeading headdesktopView">Top Rated</h1>
+          <h1 className="trendHeading headDesktopView">Top Rated</h1>
           <h1 className="trendHeading headmobileView">Popular</h1>
           {this.renderTopRated()}
           <h1 className="trendHeading">Originals</h1>
