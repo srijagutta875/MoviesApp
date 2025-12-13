@@ -16,18 +16,11 @@ class Header extends Component {
     const {location, menuOpen, toggleMenu, isTransparent} = this.props
     const currentPath = location.pathname
     const searchPage = currentPath === '/search'
-    const isMoviesPage = currentPath.includes('/movies/')
-
-    let headerClass = 'solid'
-
-    if (isMoviesPage) {
-      headerClass = 'movies'
-    } else if (isTransparent) {
-      headerClass = 'transparent'
-    }
 
     return (
-      <div className={`headerWrapper ${headerClass}`}>
+      <div
+        className={`headerWrapper ${isTransparent ? 'transparent' : 'solid'}`}
+      >
         {/* HEADER */}
         <div className="headerContainer">
           <div className="container">

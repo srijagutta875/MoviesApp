@@ -14,10 +14,6 @@
   background-color: rgba(12, 11, 16, 0.2);
 }
 
-.headerWrapper.movies {
-  background-color:  rgba(12, 11, 16, 0.2);
-}
-
 .headerContainer {
   height: 10vh;
   display: flex;
